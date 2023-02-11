@@ -1,21 +1,28 @@
 from flask import Flask, render_template
+
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template("index.html",row=8,col=8,color_one='red',color_two='black')
+
 
 @app.route('/<int:x>')
-def single_parameter(x):
-    return render_template('x.html', x = x)
+def row(x):
+    return render_template("index.html",row=x,col=8,color_one='red',color_two='black')
 
 @app.route('/<int:x>/<int:y>')
-def two_parameters(x, y):
-    return render_template('xy.html', x = x, y = y)
+def row_col(x,y):
+    return render_template("index.html",row=x,col=y,color_one='red',color_two='black')
 
-@app.route('/<int:x>/<int:y>/<string:x_color>/<string:y_color>')
-def multi(x, y, x_color, y_color):
-    return render_template('multi.html', x = x, y = y, x_color = x_color, y_color = y_color)
+@app.route('/<int:x>/<int:y>/<string:one>')
+def row_col_one(x,y,one):
+    return render_template("index.html",row=x,col=y,color_one=one,color_two='black')
+
+@app.route('/<int:x>/<int:y>/<string:one>/<string:two>')
+def row_col_two(x,y,one,two):
+    return render_template("index.html",row=x,col=y,color_one=one,color_two=two)
 
 if __name__=="__main__":
-    app.run(debug=True) 
+    app.run(debug=True)
