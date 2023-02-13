@@ -11,4 +11,6 @@ def index():
         {'first_name': 'KB', 'last_name': 'Tonel'}
     ]
     return render_template('index.htmnl', users = user_info)
-`1`
+
+if __name__=="__main__":
+    app.run(debug=True)
