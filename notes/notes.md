@@ -36,5 +36,7 @@ def create_user():
 def show_user():
     return render_template('show.html')
 
+
+# app.run(debug=True) should be the very last statement! 
 if __name__ == "__main__":
     app.run(debug=True)
